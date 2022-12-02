@@ -1,4 +1,7 @@
 import path from 'path'
+import { createClient } from 'redis';
+import auto_talk from '../api/auto_talk.mjs';
+const redisClient = createClient(6380,'127.0.0.1')
 const __dirname = path.resolve().replaceAll("\\","/")
 const dirname = "file:///"+__dirname+"/assets/pic/"
 const dir_audio = "file:///"+__dirname+"/assets/audio/"
@@ -87,6 +90,10 @@ export default {
                 return reg_dict.get(key)[randint(0,reg_dict.get(key).length)]
             }
         }
+    },
+    setReply(key,word){
+        redisClient.set(key,word)
+        auto_talk('成功喵')
     },
     chouka(type){
             const number = randint(0,100);

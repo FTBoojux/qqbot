@@ -23,30 +23,6 @@ bot.on('message.group',(context)=>{
     // }
     if(text === '骂我' ){
         auto_talk.maren(context.context.sender.user_id)
-    }else if(text === '抽轻型池'){
-        let qq = context.context.sender.user_id
-        let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
-        for(let i = 0;i<10;i++){
-            let chouka = util.chouka(1);
-            res +=chouka
-        }
-        auto_talk.autoReply(res)
-    }else if(text === '抽重型池'){
-        let qq = context.context.sender.user_id
-        let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
-        for(let i = 0;i<10;i++){
-            let chouka = util.chouka(2);
-            res +=chouka
-        }
-        auto_talk.autoReply(res)
-    }else if(text === '抽特型池'){
-        let qq = context.context.sender.user_id
-        let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
-        for(let i = 0;i<10;i++){
-            let chouka = util.chouka(3);
-            res +=chouka
-        }
-        auto_talk.autoReply(res)
     }else if(text === '[CQ:image,file=d2a61f1cd5af2d5a53fc6a08119658f9.image,subType=1,url=https://gchat.qpic.cn/gchatpic_new/1049595786/659978686-3173809172-D2A61F1CD5AF2D5A53FC6A08119658F9/0?term=3]'){
         let qq = context.context.sender.user_id
         console.log("banned:"+context.context.sender.nickname)
@@ -55,8 +31,43 @@ bot.on('message.group',(context)=>{
     // console.log(dict.get(context.context.message))
     const s = util.lookupdict(context.context.message);
     console.log("lookup:"+s)
-    if(s) auto_talk.autoReply(s)
-
+    let mes = context.context.message
+    let check = mes.split(6)
+    if(s){
+        auto_talk.autoReply(s)
+    }else if(check === '/小恋-设置'){
+        console.log('设置关键词');
+        const inMes = mes.split(' ')
+        util.setReply(inMes[1],inMes[2])
+    }else{
+        const customized = util.getCustomized(mes)
+        if(customized) auto_talk.autoReply(customized)
+    }
+    // else if(text === '抽轻型池'){
+    //     let qq = context.context.sender.user_id
+    //     let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
+    //     for(let i = 0;i<10;i++){
+    //         let chouka = util.chouka(1);
+    //         res +=chouka
+    //     }
+    //     auto_talk.autoReply(res)
+    // }else if(text === '抽重型池'){
+    //     let qq = context.context.sender.user_id
+    //     let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
+    //     for(let i = 0;i<10;i++){
+    //         let chouka = util.chouka(2);
+    //         res +=chouka
+    //     }
+    //     auto_talk.autoReply(res)
+    // }else if(text === '抽特型池'){
+    //     let qq = context.context.sender.user_id
+    //     let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
+    //     for(let i = 0;i<10;i++){
+    //         let chouka = util.chouka(3);
+    //         res +=chouka
+    //     }
+    //     auto_talk.autoReply(res)
+    // }
 })
 bot.on('socket.open',context=>{
     console.log('open')
