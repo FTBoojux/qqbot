@@ -97,7 +97,13 @@ export default {
         auto_talk('成功喵')
     },
     getCustomized(key){
-
+        redisClient.get(key,(err,value)=>{
+            if(err){
+                console.log(err);
+            }else{
+                return value
+            }
+        })
     },
     chouka(type){
             const number = randint(0,100);
