@@ -2,6 +2,9 @@ import path from 'path'
 import { createClient } from 'redis';
 import auto_talk from '../api/auto_talk.mjs';
 const redisClient = createClient(6380,'127.0.0.1')
+redisClient.on('error', function (err) {
+    console.log('Error ' + err);
+  });
 const __dirname = path.resolve().replaceAll("\\","/")
 const dirname = "file:///"+__dirname+"/assets/pic/"
 const dir_audio = "file:///"+__dirname+"/assets/audio/"
