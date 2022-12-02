@@ -32,14 +32,17 @@ bot.on('message.group',(context)=>{
     const s = util.lookupdict(context.context.message);
     console.log("lookup:"+s)
     let mes = context.context.message
-    let check = mes.substring(6)
+    let check = mes.substring(0,6)
+    let input = mes.substring(6)
     console.log('check',check);
     if(s){
         auto_talk.autoReply(s)
     }else if(check === '/小恋-设置'){
         console.log('设置关键词');
-        const inMes = mes.split(' ')
-        util.setReply(inMes[1],inMes[2])
+        let pos = input.indexOf(' ')
+        let key = input.substring(0,pos)
+        let word = input.substring(pos)
+        util.setReply(key,value)
     }else{
         const customized = util.getCustomized(mes)
         if(customized) auto_talk.autoReply(customized)
