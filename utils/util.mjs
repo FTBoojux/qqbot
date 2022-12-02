@@ -94,7 +94,7 @@ export default {
     setReply(key,word){
         console.log(`${key}:${word}`);
         redisClient.set(key,word)
-        auto_talk('成功喵')
+        auto_talk.autoReply('成功喵')
     },
     getCustomized(key){
         redisClient.get(key,(err,value)=>{
