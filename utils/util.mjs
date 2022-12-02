@@ -1,7 +1,13 @@
 import path from 'path'
 import { createClient } from 'redis';
 import auto_talk from '../api/auto_talk.mjs';
-const redisClient = createClient(6380,'47.98.97.181')
+const redisClient = createClient({
+    socket: {
+        host: '127.0.0.1',
+        port: 6380
+    },
+    password: 'QQbotRedis'
+});
 await redisClient.connect();
 redisClient.on('error', function (err) {
     console.log('Error ' + err);
