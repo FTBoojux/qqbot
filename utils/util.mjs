@@ -95,6 +95,9 @@ export default {
         redisClient.set(key,word)
         auto_talk('成功喵')
     },
+    getCustomized(key){
+
+    },
     chouka(type){
             const number = randint(0,100);
         if(type === 1){
