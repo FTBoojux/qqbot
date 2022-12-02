@@ -2,7 +2,7 @@ import path from 'path'
 import { createClient } from 'redis';
 import auto_talk from '../api/auto_talk.mjs';
 const redisClient = createClient(6380,'47.98.97.181')
-await client.connect();
+await redisClient.connect();
 redisClient.on('error', function (err) {
     console.log('Error ' + err);
   });
