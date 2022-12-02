@@ -33,6 +33,7 @@ bot.on('message.group',(context)=>{
     console.log("lookup:"+s)
     let mes = context.context.message
     let check = mes.split(6)
+    console.log('check',check);
     if(s){
         auto_talk.autoReply(s)
     }else if(check === '/小恋-设置'){
