@@ -42,7 +42,7 @@ bot.on('message.group',(context)=>{
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
         let word = input.substring(pos)
-        util.setReply(key,value)
+        util.setReply(key,word)
     }else{
         const customized = util.getCustomized(mes)
         if(customized) auto_talk.autoReply(customized)
