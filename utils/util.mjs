@@ -92,6 +92,7 @@ export default {
         }
     },
     setReply(key,word){
+        console.log(`${key}:${word}`);
         redisClient.set(key,word)
         auto_talk('成功喵')
     },
