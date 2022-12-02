@@ -32,7 +32,7 @@ bot.on('message.group',(context)=>{
     const s = util.lookupdict(context.context.message);
     console.log("lookup:"+s)
     let mes = context.context.message
-    let check = mes.split(6)
+    let check = mes.substring(6)
     console.log('check',check);
     if(s){
         auto_talk.autoReply(s)
