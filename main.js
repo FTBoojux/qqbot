@@ -45,6 +45,7 @@ bot.on('message.group',(context)=>{
         util.setReply(key,word)
     }else{
         const customized = util.getCustomized(mes)
+        console.log(customized);
         if(customized) auto_talk.autoReply(customized)
     }
     // else if(text === '抽轻型池'){
