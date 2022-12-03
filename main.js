@@ -49,7 +49,7 @@ bot.on('message.group',(context)=>{
             word = word.substring(start+4)
             let end = word.indexOf(';')
             word = word.substring(0,end)
-            word = `[CQ:image,url=${word}]`
+            word = `[CQ:image,file=1,url=${word}]`
         }
         console.log(`key:${key}`);
         console.log(`word:${word}`);
