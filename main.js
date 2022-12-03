@@ -36,7 +36,7 @@ bot.on('message.group',(context)=>{
     let input = mes.substring(6)
     console.log('check',check);
     if(s){
-        auto_talk.autoReply(s)
+        auto_talk.autoReply(s,context.context.group_id)
     }else if(check === '/小恋-设置'){
         console.log('设置关键词');
         let pos = input.indexOf(' ')

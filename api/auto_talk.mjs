@@ -5,11 +5,11 @@ const baseurl = 'http://127.0.0.1:5700'
 //     timeout:15000
 // })
 export default {
-    autoReply(word,qq){
+    autoReply(word,group,qq){
         console.log(word)
         let msg = ``
         if(qq) msg = `[CQ:at,qq=${qq}] `
-        const url = `${baseurl}/send_group_msg?group_id=659978686&message=${msg}${encodeURI(word)}`
+        const url = `${baseurl}/send_group_msg?group_id=${group}&message=${msg}${encodeURI(word)}`
         axios
             .get(url)
             .then(res=>{})
