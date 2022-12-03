@@ -50,6 +50,7 @@ bot.on('message.group',(context)=>{
         let key = input.substring(0,pos)
         util.remove(key)
     }else{
+        console.log('redis check');
         const customized = util.getCustomized(mes)
         console.log(customized);
         if(customized) auto_talk.autoReply(customized,context.context.group_id)
