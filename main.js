@@ -41,7 +41,7 @@ bot.on('message.group',(context)=>{
         console.log(`设置关键词:${input}`);
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
-        let word = input.substring(pos)
+        let word = input.substring(pos+1)
         console.log(`key:${key}`);
         console.log(`word:${word}`);
         util.setReply(key,word,context.context.group_id)

@@ -114,7 +114,8 @@ export default {
             if(err){
                 console.log(err);
             }else{
-                console.log(`value:${value}`);
+                console.log(`value:`);
+                console.log(value);
                 if(value){
                     auto_talk.autoReply(value,group_id)
                 }
