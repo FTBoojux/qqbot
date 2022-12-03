@@ -108,13 +108,16 @@ export default {
     remove(key){
         redisClient.remove(key)
     },
-    getCustomized(key){
+    getCustomized(key,group_id){
         redisClient.get(key,(err,value)=>{
             if(err){
                 console.log(err);
             }else{
                 console.log(`value:${value}`);
-                return value
+                if(value){
+                    auto_talk.autoReply(value,group_id)
+                }
+                // return value
             }
         })
     },

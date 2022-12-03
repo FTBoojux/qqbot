@@ -51,9 +51,9 @@ bot.on('message.group',(context)=>{
         util.remove(key)
     }else{
         console.log('redis check');
-        const customized = util.getCustomized(mes)
-        console.log(customized);
-        if(customized) auto_talk.autoReply(customized,context.context.group_id)
+        const customized = util.getCustomized(mes,context.context.group_id)
+        // console.log(customized);
+        // if(customized) auto_talk.autoReply(customized,context.context.group_id)
     }
     // else if(text === '抽轻型池'){
     //     let qq = context.context.sender.user_id
