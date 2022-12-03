@@ -110,18 +110,8 @@ export default {
     },
     getCustomized(key,group_id){
         console.log(`redis-key:${key}`);
-        redisClient.get(key,(err,value)=>{
-            if(err){
-                console.log(err);
-            }else{
-                console.log(`value:`);
-                console.log(value);
-                if(value){
-                    auto_talk.autoReply(value,group_id)
-                }
-                // return value
-            }
-        })
+        let value = redisClient.get(key)
+        return value
     },
     chouka(type){
             const number = randint(0,100);
