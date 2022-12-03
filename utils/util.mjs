@@ -109,6 +109,7 @@ export default {
         redisClient.remove(key)
     },
     getCustomized(key,group_id){
+        console.log(`redis-key:${key}`);
         redisClient.get(key,(err,value)=>{
             if(err){
                 console.log(err);
