@@ -47,9 +47,9 @@ bot.on('message.group',(context)=>{
         util.setReply(key,word,context.context.group_id)
     }else if(check === '/小恋-移除'){
         let pos = input.indexOf(' ')
-        let key = input.substring(0,pos)
-        console.log(`移除key:${key}`);
-        util.remove(key)
+        // let key = input.substring(0,pos)
+        console.log(`移除key:${input}`);
+        util.remove(input)
         auto_talk.autoReply('已移除',context.context.group_id)
     }else{
         console.log('redis check');
