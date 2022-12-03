@@ -101,9 +101,9 @@ export default {
             }
         }
     },
-    setReply(key,word){
+    setReply(key,word,group_id){
         redisClient.set(key,word)
-        auto_talk.autoReply('成功喵')
+        auto_talk.autoReply('成功喵',group_id)
     },
     remove(key){
         redisClient.remove(key)

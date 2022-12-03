@@ -38,13 +38,13 @@ bot.on('message.group',(context)=>{
     if(s){
         auto_talk.autoReply(s,context.context.group_id)
     }else if(check === '/小恋-设置'){
-        console.log('设置关键词');
+        console.log(`设置关键词:${input}`);
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
         let word = input.substring(pos)
         console.log(`key:${key}`);
         console.log(`word:${word}`);
-        util.setReply(key,word)
+        util.setReply(key,word,context.context.group_id)
     }else if(check === '/小恋-移除'){
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
