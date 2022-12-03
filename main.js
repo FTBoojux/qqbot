@@ -47,8 +47,9 @@ bot.on('message.group',(context)=>{
         if(cqCode === 'image'){
             let start = word.indexOf('url')
             word = word.substring(start+4)
-            let end = word.indexOf(';')
-            word = word.substring(0,end)
+            let end = word.indexOf('&')
+            word = word.substring(0,)
+            // [CQ:image,file=${dirname}pia.jpg
             word = `[CQ:image,file=1,url=${word}]`
         }
         console.log(`key:${key}`);
