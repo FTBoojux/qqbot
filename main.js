@@ -42,7 +42,8 @@ bot.on('message.group',(context)=>{
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
         let word = input.substring(pos+1)
-        let cqCode = word.substring(pos+1,11-6)
+        let cqBegin = word.indexOf(":")
+        let cqCode = word.substring(cqBegin+1,cqBegin+7)
         console.log(`cqCode:${cqCode}`);
         if(cqCode === 'image'){
             let start = word.indexOf('url')
