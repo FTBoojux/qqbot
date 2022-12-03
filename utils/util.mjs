@@ -12,6 +12,12 @@ await redisClient.connect();
 redisClient.on('error', function (err) {
     console.log('Error ' + err);
   });
+async function redisReply(key,group_id){
+    let value = await redisClient.get(key)
+    if(value){
+        auto_talk.autoReply(value,group_id)        
+    }
+}
 const __dirname = path.resolve().replaceAll("\\","/")
 const dirname = "file:///"+__dirname+"/assets/pic/"
 const dir_audio = "file:///"+__dirname+"/assets/audio/"
@@ -110,8 +116,7 @@ export default {
     },
     getCustomized(key,group_id){
         console.log(`redis-key:${key}`);
-        let value = redisClient.get(key)
-        return value
+        redisReply(key,group_id)        
     },
     chouka(type){
             const number = randint(0,100);
