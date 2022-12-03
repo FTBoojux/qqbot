@@ -42,6 +42,14 @@ bot.on('message.group',(context)=>{
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
         let word = input.substring(pos+1)
+        let cqCode = word.substring(4,9)
+        if(cqCode === 'image'){
+            let start = word.indexOf('url')
+            word = word.substring(start+4)
+            let end = word.indexOf(';')
+            word = word.substring(0,end)
+            word = `[CQ:image,file=${word}]`
+        }
         console.log(`key:${key}`);
         console.log(`word:${word}`);
         util.setReply(key,word,context.context.group_id)
