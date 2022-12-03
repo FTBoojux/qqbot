@@ -117,7 +117,7 @@ export default {
     },
     getCustomized(key,group_id){
         console.log(`redis-key:${key}`);
-        redisReply(key,group_id)        
+        redisReply(decodeURI(key),group_id)        
     },
     chouka(type){
             const number = randint(0,100);
