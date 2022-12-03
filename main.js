@@ -49,6 +49,7 @@ bot.on('message.group',(context)=>{
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
         util.remove(key)
+        auto_talk.autoReply('已移除',context.context.group_id)
     }else{
         console.log('redis check');
         util.getCustomized(mes,context.context.group_id)

@@ -112,7 +112,7 @@ export default {
         auto_talk.autoReply('成功喵',group_id)
     },
     remove(key){
-        redisClient.remove(key)
+        redisClient.del(key)
     },
     getCustomized(key,group_id){
         console.log(`redis-key:${key}`);
