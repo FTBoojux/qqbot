@@ -14,6 +14,7 @@ redisClient.on('error', function (err) {
   });
 async function redisReply(key,group_id){
     let value = await redisClient.get(key)
+    console.log(`redisValue:${value}`);
     if(value){
         auto_talk.autoReply(value,group_id)        
     }
