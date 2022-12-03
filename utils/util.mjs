@@ -102,9 +102,11 @@ export default {
         }
     },
     setReply(key,word){
-        console.log(`${key}:${word}`);
         redisClient.set(key,word)
         auto_talk.autoReply('成功喵')
+    },
+    remove(key){
+        redisClient.remove(key)
     },
     getCustomized(key){
         redisClient.get(key,(err,value)=>{

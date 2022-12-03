@@ -42,11 +42,17 @@ bot.on('message.group',(context)=>{
         let pos = input.indexOf(' ')
         let key = input.substring(0,pos)
         let word = input.substring(pos)
+        console.log(`key:${key}`);
+        console.log(`word:${word}`);
         util.setReply(key,word)
+    }else if(check === '/小恋-移除'){
+        let pos = input.indexOf(' ')
+        let key = input.substring(0,pos)
+        util.remove(key)
     }else{
         const customized = util.getCustomized(mes)
         console.log(customized);
-        if(customized) auto_talk.autoReply(customized)
+        if(customized) auto_talk.autoReply(customized,context.context.group_id)
     }
     // else if(text === '抽轻型池'){
     //     let qq = context.context.sender.user_id
