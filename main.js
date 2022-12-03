@@ -33,7 +33,7 @@ bot.on('message.group',(context)=>{
     console.log("lookup:"+s)
     let mes = context.context.message
     let check = mes.substring(0,6)
-    let input = mes.substring(6)
+    let input = mes.substring(7)
     console.log('check',check);
     if(s){
         auto_talk.autoReply(s,context.context.group_id)
