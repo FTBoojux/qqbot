@@ -10,6 +10,7 @@ export default {
         let msg = ``
         if(qq) msg = `[CQ:at,qq=${qq}] `
         const url = `${baseurl}/send_group_msg?group_id=${group}&message=${msg}${encodeURI(word)}`
+        console.log(`final url : ${url}`);
         axios
             .get(url)
             .then(res=>{})
