@@ -93,7 +93,7 @@ bot.on('message.group',(context)=>{
         //     auto_talk.autoReply(res)
         // }        
     } catch (error) {
-        console.log(err);
+        console.log(error);
         // auto_talk.autoReply("")
     }
 
