@@ -1,24 +1,24 @@
 import path from 'path'
 import { createClient } from 'redis';
 import auto_talk from '../api/auto_talk.mjs';
-const redisClient = createClient({
-    socket: {
-        host: '127.0.0.1',
-        port: 6380
-    },
-    password: 'QQbotRedis'
-});
-await redisClient.connect();
-redisClient.on('error', function (err) {
-    console.log('Error ' + err);
-  });
-async function redisReply(key,group_id){
-    let value = await redisClient.get(key)
-    console.log(`redisValue:${value}`);
-    if(value){
-        auto_talk.autoReply(value,group_id)        
-    }
-}
+// const redisClient = createClient({
+//     socket: {
+//         host: '127.0.0.1',
+//         port: 6380
+//     },
+//     password: 'QQbotRedis'
+// });
+// await redisClient.connect();
+// redisClient.on('error', function (err) {
+//     console.log('Error ' + err);
+//   });
+// async function redisReply(key,group_id){
+//     let value = await redisClient.get(key)
+//     console.log(`redisValue:${value}`);
+//     if(value){
+//         auto_talk.autoReply(value,group_id)
+//     }
+// }
 const __dirname = path.resolve().replaceAll("\\","/")
 const dirname = "file:///"+__dirname+"/assets/pic/"
 const dir_audio = "file:///"+__dirname+"/assets/audio/"
