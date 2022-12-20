@@ -38,35 +38,37 @@ bot.on('message.group',(context)=>{
         console.log('check',check);
         if(s){
             auto_talk.autoReply(s,context.context.group_id)
-        }else if(check === '/小恋-设置'){
-            console.log(`设置关键词:${input}`);
-            let pos = input.indexOf(' ')
-            let key = input.substring(0,pos)
-            let word = input.substring(pos+1)
-            let cqBegin = word.indexOf(":")
-            let cqCode = word.substring(cqBegin+1,cqBegin+6)
-            console.log(`cqCode:${cqCode}`);
-            if(cqCode === 'image'){
-                let start = word.indexOf('url')
-                word = word.substring(start+4)
-                let end = word.indexOf('&')
-                word = word.substring(0,end)
-                // [CQ:image,file=${dirname}pia.jpg
-                word = `[CQ:image,file=1,url=${word}]`
-            }
-            console.log(`key:${key}`);
-            console.log(`word:${word}`);
-            util.setReply(key,word,context.context.group_id)
-        }else if(check === '/小恋-移除'){
-            let pos = input.indexOf(' ')
-            // let key = input.substring(0,pos)
-            console.log(`移除key:${input}`);
-            util.remove(input)
-            auto_talk.autoReply('已移除',context.context.group_id)
-        }else{
-            console.log('redis check');
-            util.getCustomized(mes,context.context.group_id)
         }
+        // else if(check === '/小恋-设置'){
+        //     console.log(`设置关键词:${input}`);
+        //     let pos = input.indexOf(' ')
+        //     let key = input.substring(0,pos)
+        //     let word = input.substring(pos+1)
+        //     let cqBegin = word.indexOf(":")
+        //     let cqCode = word.substring(cqBegin+1,cqBegin+6)
+        //     console.log(`cqCode:${cqCode}`);
+        //     if(cqCode === 'image'){
+        //         let start = word.indexOf('url')
+        //         word = word.substring(start+4)
+        //         let end = word.indexOf('&')
+        //         word = word.substring(0,end)
+        //         // [CQ:image,file=${dirname}pia.jpg
+        //         word = `[CQ:image,file=1,url=${word}]`
+        //     }
+        //     console.log(`key:${key}`);
+        //     console.log(`word:${word}`);
+        //     util.setReply(key,word,context.context.group_id)
+        // }
+        // else if(check === '/小恋-移除'){
+        //     let pos = input.indexOf(' ')
+        //     // let key = input.substring(0,pos)
+        //     console.log(`移除key:${input}`);
+        //     util.remove(input)
+        //     auto_talk.autoReply('已移除',context.context.group_id)
+        // }else{
+        //     console.log('redis check');
+        //     util.getCustomized(mes,context.context.group_id)
+        // }
         // else if(text === '抽轻型池'){
         //     let qq = context.context.sender.user_id
         //     let res = `[CQ:at,qq=${qq}] 你的抽卡结果是---\r\n`
