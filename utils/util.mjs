@@ -50,7 +50,7 @@ const word_dict = new Map([
         `[CQ:record,file=${dir_audio}wulusai-v2.mp3]`,
         `[CQ:image,file=${dirname}cry.jpg]`,
     ]],
-    ['回家三连',[`[CQ:record,file=${dir_audio}home.mp3]`]]
+    ['回家',[`[CQ:record,file=${dir_audio}home.mp3]`]]
 
 ])
 const reg_dict = new Map([
