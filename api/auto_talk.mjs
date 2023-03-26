@@ -4,6 +4,20 @@ const baseurl = 'http://127.0.0.1:5700'
 //     baseURL:'http://127.0.0.1:5700',
 //     timeout:15000
 // })
+const OPENAI_API_KEY = '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';
+
+let request = {
+    method: 'POST',
+    url: 'https://api.openai.com/v1/chat/completions',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+    },
+    data: {
+        "model": "gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": "Hello!"}]
+    }
+};
 export default {
     autoReply(word,group,qq){
         console.log(word)
@@ -34,5 +48,14 @@ export default {
             .catch(err=>{
                 console.log(err)
             })
+    },
+    aiRepley(content,group,qq){
+        request.data.messages[0].content = content;
+        axios(request)
+            .then(response => {
+                const content = response.data.choices[0].message.content;
+                this.autoReply(content,group,qq)
+            })
+            .catch(error => console.error(error));
     }
 }

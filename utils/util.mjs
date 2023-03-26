@@ -19,6 +19,7 @@ import auto_talk from '../api/auto_talk.mjs';
 //         auto_talk.autoReply(value,group_id)
 //     }
 // }
+
 const __dirname = path.resolve().replaceAll("\\","/")
 const dirname = "file:///"+__dirname+"/assets/pic/"
 const dir_audio = "file:///"+__dirname+"/assets/audio/"
@@ -118,7 +119,7 @@ export default {
     },
     getCustomized(key,group_id){
         console.log(`redis-key:${key}`);
-        redisReply(decodeURI(key),group_id)        
+        redisReply(decodeURI(key),group_id)
     },
     chouka(type){
             const number = randint(0,100);

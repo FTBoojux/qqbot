@@ -38,6 +38,8 @@ bot.on('message.group',(context)=>{
         console.log('check',check);
         if(s){
             auto_talk.autoReply(s,context.context.group_id)
+        }else if(check === '/aikoi'){
+            auto_talk.aiRepley(input,context.context.group_id,context.context.sender.user_id)
         }
         // else if(check === '/小恋-设置'){
         //     console.log(`设置关键词:${input}`);
@@ -93,7 +95,7 @@ bot.on('message.group',(context)=>{
         //         res +=chouka
         //     }
         //     auto_talk.autoReply(res)
-        // }        
+        // }
     } catch (error) {
         console.log(error);
         // auto_talk.autoReply("")
