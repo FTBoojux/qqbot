@@ -1,23 +1,23 @@
 import axios from "axios";
+import fetch from "node-fetch";
 const baseurl = 'http://127.0.0.1:5700'
 // axios.create({
 //     baseURL:'http://127.0.0.1:5700',
 //     timeout:15000
 // })
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '';
 
 let request = {
     method: 'POST',
-    url: 'https://api.openai.com/v1/chat/completions',
     headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${OPENAI_API_KEY}`
-    },
-    data: {
-        "model": "gpt-3.5-turbo",
-        "messages": [{"role": "user", "content": "Hello!"}]
     }
 };
+let body = {
+    "model": "gpt-3.5-turbo",
+    "messages": [{"role": "user", "content": "Hello!"}]
+}
 export default {
     autoReply(word,group,qq){
         console.log(word)
@@ -50,12 +50,14 @@ export default {
             })
     },
     aiRepley(content,group,qq){
-        request.data.messages[0].content = content;
-        axios(request)
-            .then(response => {
-                const content = response.data.choices[0].message.content;
-                this.autoReply(content,group,qq)
+        body.messages[0].content = content;
+        request.body = JSON.stringify(body);
+        fetch('https://openapi.ssiic.com/v1/chat/completions', request)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                // const content = data.choices[0].message.content;
+                // this.autoReply(content,group,qq)
             })
-            .catch(error => console.error(error));
-    }
+            .catch(error => console.error(error));    }
 }
